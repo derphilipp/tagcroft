@@ -6,17 +6,14 @@ tagcroft is a cli to put tags into podcast audio files
 
 Install the application requirements:
 
+- kid3-cli ('kid3' on homebrew)
+- sublercli
+
 macOS:
 ```
 $ brew cask install kid3
+$ brew install derphilipp/homebrew-sublercli/sublercli
 ```
-
-Ubuntu:
-```
-$ sudo apt install kid3-cli
-```
-
-
 
 Install the python requirements:
 ```
