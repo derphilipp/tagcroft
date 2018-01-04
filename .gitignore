@@ -1,7 +1,9 @@
 *.pyc
 *.mp3
 *.aac
+*.m4a
 *.flac
 
 venv/
 .cache/
+.mypy_cache
