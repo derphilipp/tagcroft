@@ -1,0 +1,18 @@
+---
+track_number: 42
+title: The name of the Podcast episode
+date: 2018
+subtitle: |
+    This is what the episode is all about,
+    information here.
+description: |
+    This is a more eloquent description, usually
+    much longer then the subtitle.
+keywords:
+    - Keywords
+    - Podcast
+picture: artwork.jpg
+chapters: chapters.txt
+url: "http://github.com/derphilipp/tagcroft"
+artist: The name of the Podcast
+iTunSMPB: " 00000000 00000800 0000026A 0000000010036D96 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000"
