@@ -5,6 +5,10 @@
 *.wav
 *.flac
 
+*.bak
+*.old
+*.txt
+
 venv/
 .cache/
 .mypy_cache

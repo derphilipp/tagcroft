@@ -7,12 +7,16 @@ tagcroft is a cli to put tags into podcast audio files
 Install the application requirements:
 
 - kid3-cli ('kid3' on homebrew)
-- sublercli
+- lame (for mp3 encoding)
+- ffmpeg (for m4a encoding)
+- sublercli (for m4a chapters)
 
 macOS:
 ```
 $ brew cask install kid3
 $ brew install derphilipp/homebrew-sublercli/sublercli
+$ brew install lame
+$ brew install ffmpeg --with-fdk-aac
 ```
 
 Install the python requirements:
@@ -20,13 +24,8 @@ Install the python requirements:
 $ pip install -r requirements.txt
 ```
 
-
 Run the application:
 ```
-$ python -m tagcroft --help
+$ python tagcroft.py AUDIO.wav METADATA.yaml
 ```
 
-To run the tests:
-```
-    $ pytest
-```
