@@ -1,4 +1,5 @@
 # tagcroft
+[![Build Status](https://travis-ci.org/derphilipp/tagcroft.svg?branch=master)](https://travis-ci.org/derphilipp/tagcroft)
 
 tagcroft is a cli to put tags into podcast audio files
 
