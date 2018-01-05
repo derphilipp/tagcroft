@@ -26,8 +26,8 @@ def convert_to_m4a(input_filename, output_filename):
 
 def convert_to_mp3_via_ffmpeg(input_filename, output_filename):
     command = [
-        'ffmpeg', '-loglevel', '', '-nostdin', '-i', input_filename, '-b:a',
-        '128k', '-write_xing', '0', output_filename
+        'ffmpeg', '-loglevel', 'warning', '-nostdin', '-i', input_filename,
+        '-b:a', '128k', '-write_xing', '0', output_filename
     ]
     subprocess.check_output(command)
 
@@ -41,7 +41,7 @@ def convert_to_mp3_via_lame(input_filename, output_filename):
 
 
 def convert_to_mp3(input_filename, output_filename):
-    convert_to_mp3_via_lame(input_filename, output_filename)
+    convert_to_mp3_via_ffmpeg(input_filename, output_filename)
 
 
 def write_chapters_mp3(filename_mp3, filename_chapters):
