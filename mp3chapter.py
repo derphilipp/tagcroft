@@ -4,7 +4,6 @@
 encode mp3 chapter
 """
 import eyed3
-import sys
 
 
 def add_next_time(data, musicfile):
@@ -37,7 +36,6 @@ def add_chapters(fname, chapterfile):
     chaps = add_next_time(chaps, audio)
     # total_length = int(tag.getTextFrame('TLEN'))
 
-    child_ids = []
     list_of_chapters = []
     for i, c in enumerate(chaps):
         chaptername = "chp{}".format(i).encode("utf-8")
