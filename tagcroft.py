@@ -86,7 +86,7 @@ def load_yaml(file):
 def generate_output_filename(data):
     name = "{}-{}".format(data['track_number'],
                           dinsort.normalize(
-                              data['title'].replace(' ', '-'),
+                              data['title'].replace(' ', '-').replace(',', ''),
                               variant=dinsort.VARIANT2))
     return name
 
