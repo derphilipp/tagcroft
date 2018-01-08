@@ -106,11 +106,11 @@ def tag(yaml_file, input_file, m4a=True, mp3=True, flac=True):
 
     if m4a:
         output_filename_m4a = "{}.m4a".format(output_filename)
-        click.echo("Generating mp4: {}".format(output_filename_m4a))
-        convert_to_m4a(input_file, output_filename_m4a)
-        write_chapters_m4a(output_filename_m4a, tags['chapters'])
         m4a = output_filename_m4a
+        click.echo("Generating m4a: {}".format(output_filename_m4a))
+        convert_to_m4a(input_file, output_filename_m4a)
         click.echo("Writing chapters for {}".format(output_filename_m4a))
+        write_chapters_m4a(output_filename_m4a, tags['chapters'])
         click.echo("Writing tags for {}".format(output_filename_m4a))
         set_tag(m4a, "Album Artist", tags['artist'])
         set_tag(m4a, "Artist", tags['artist'])
@@ -130,8 +130,11 @@ def tag(yaml_file, input_file, m4a=True, mp3=True, flac=True):
         set_picture(m4a, tags["picture"])
     if mp3:
         output_filename_mp3 = "{}.mp3".format(output_filename)
+        click.echo("Generating mp3: {}".format(output_filename_mp3))
         convert_to_mp3(input_file, output_filename_mp3)
+        click.echo("Writing chapters for {}".format(output_filename_mp3))
         write_chapters_mp3(output_filename_mp3, tags['chapters'])
+        click.echo("Writing tags for {}".format(output_filename_mp3))
         set_tag(output_filename_mp3, "Artist", tags['artist'])
         set_tag(output_filename_mp3, "Comment", tags["subtitle"])
         set_tag(output_filename_mp3, "Date", tags['date'])
