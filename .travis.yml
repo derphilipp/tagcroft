@@ -1,8 +1,14 @@
+os: osx
 language: python
 python:
   - "3.5"
   - "3.6"
 # command to install dependencies
+before_install:
+  - brew install lame
+  - brew install ffmpeg --with-fdk-aac
+  - brew install derphilipp/homebrew-sublercli/sublercli --HEAD
+  - brew cask install kid3
 install:
   - pip install -r requirements.txt
   - pip install flake8
