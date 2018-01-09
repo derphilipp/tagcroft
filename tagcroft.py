@@ -125,7 +125,7 @@ def tag(yaml_file, input_file, m4a=True, mp3=True, flac=True):
         set_tag(m4a, "Title", "{} - {}".format(tags['track_number'],
                                                tags['title']))
         set_tag(m4a, "Track Number", tags['track_number'])
-        set_tag(m4a, "iTunSMPB", tags["iTunSMPB"])
+        # set_tag(m4a, "iTunSMPB", tags["iTunSMPB"])
         set_tag(m4a, "purl", tags["url"])
         set_picture(m4a, tags["picture"])
     if mp3:
