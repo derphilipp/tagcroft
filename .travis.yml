@@ -1,7 +1,7 @@
+---
 os: osx
 language: objective-c
 # command to install dependencies
-#
 before_install:
   - brew install python
   - brew install lame
