@@ -15,7 +15,7 @@ Install the application requirements:
 macOS:
 ```
 $ brew cask install kid3
-$ brew install derphilipp/homebrew-sublercli/sublercli
+$ brew install --HEAD derphilipp/homebrew-sublercli/sublercli
 $ brew install lame
 $ brew install ffmpeg --with-fdk-aac
 ```
