@@ -35,3 +35,6 @@ Run the application:
 $ python3 tagcroft.py AUDIO.wav METADATA.yaml
 ```
 
+## Name
+The tools name comes from "tag" and [Maurice Flitcroft](https://en.wikipedia.org/wiki/Maurice_Flitcroft), the "world's worst golfer" - but played the game anyway.
+
