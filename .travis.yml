@@ -1,14 +1,28 @@
 ---
-os: osx
+language: python
+
+os:
+- linux
+- osx
+
 osx_image: xcode9.2
-language: objective-c
+dist: trusty
+
 # command to install dependencies
+
 before_install:
+- if [ "$TRAVIS_OS_NAME" == "linux" ]; then
+    sudo apt-get update -qq;
+    sudo apt-get install -y python3 lame ffmpeg mp4box kid3-cli
+  elif [ "$TRAVIS_OS_NAME" == "osx" ]; then
   - brew install python
   - brew install lame
   - brew install ffmpeg --with-fdk-aac
   - brew install mp4box
   - brew cask install kid3
+  fi
+
+before_install:
 install:
   - pip install -r requirements.txt
   - pip install flake8

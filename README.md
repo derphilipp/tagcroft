@@ -10,12 +10,12 @@ Install the application requirements:
 - kid3-cli ('kid3' on homebrew)
 - lame (for mp3 encoding)
 - ffmpeg (for m4a encoding)
-- sublercli (for m4a chapters)
+- MP4Box (for m4a chapters)
 
 macOS:
 ```
 $ brew cask install kid3
-$ brew install --HEAD derphilipp/homebrew-sublercli/sublercli
+$ brew install MP4Box
 $ brew install lame
 $ brew install ffmpeg --with-fdk-aac
 ```
