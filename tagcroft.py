@@ -5,11 +5,28 @@ tagcroft is a cli to put tags into podcast audio files
 """
 
 import click
-import subprocess
-import shutil
 import dinsort
-import yaml as yml
 import mp3chapter
+import os
+import re
+import subprocess
+import text_to_srt
+import yaml as yml
+
+
+def get_mp4_length(input_filename):
+    command = ['MP4Box', '-info', input_filename]
+    result = subprocess.check_output(command, stderr=subprocess.STDOUT)
+    result = os.fsdecode(result)
+
+    findings = re.findall(
+        r'Indicated Duration ([0-9]{2}:[0-9]{2}:[0-9]{2}[\.,][0-9]{3})',
+        result)
+    return findings[0]
+
+
+def quote(txt):
+    return txt.replace("'", "\\'")
 
 
 def convert_to_m4a_via_ffmpeg(input_filename, output_filename):
@@ -49,17 +66,25 @@ def write_chapters_mp3(filename_mp3, filename_chapters):
 
 
 def write_chapters_m4a(filename_m4a, filename_chapters):
+    filename_srt = "{}.srt".format(filename_chapters)
+    total_length = get_mp4_length(filename_m4a)
+    text_to_srt.convert_file(filename_chapters, filename_srt, total_length)
     command = [
-        'SublerCLI', '-source', filename_m4a, '-dest', "temp.m4a", '-chapters',
-        filename_chapters
+        'MP4Box', '-add', '{}:chap:lang=DEU'.format(filename_srt), filename_m4a
     ]
-    rg = subprocess.check_output(command)
-    assert rg == b''
-    shutil.move("temp.m4a", filename_m4a)
+    subprocess.check_output(command)
 
 
 def set_tag(filename, tag, value):
-    command = ['kid3-cli', '-c', 'set "{}" "{}"'.format(tag, value), filename]
+    if isinstance(value, str):
+        command = [
+            'kid3-cli', '-c', 'set "{}" "{}"'.format(tag, quote(value)),
+            filename
+        ]
+    else:
+        command = [
+            'kid3-cli', '-c', 'set "{}" "{}"'.format(tag, str(value)), filename
+        ]
     rg = subprocess.check_output(command)
     assert rg == b''
 
@@ -77,8 +102,9 @@ def load_yaml(file):
     data = yml.load(file)
     data['title'] = data['title'].strip()
     data['artist'] = data['artist'].strip()
-    data['description'] = data['description'].replace('\n', ' ').strip()
-    data['subtitle'] = data['subtitle'].replace('\n', ' ').strip()
+    data['description'] = "".join(data['description']).replace('\n',
+                                                               ' ').strip()
+    data['subtitle'] = "".join(data['subtitle']).replace('\n', ' ').strip()
     data['url'] = data['url'].strip()
     return data
 
@@ -125,7 +151,6 @@ def tag(yaml_file, input_file, m4a=True, mp3=True, flac=True):
         set_tag(m4a, "Title", "{} - {}".format(tags['track_number'],
                                                tags['title']))
         set_tag(m4a, "Track Number", tags['track_number'])
-        # set_tag(m4a, "iTunSMPB", tags["iTunSMPB"])
         set_tag(m4a, "purl", tags["url"])
         set_picture(m4a, tags["picture"])
     if mp3:
