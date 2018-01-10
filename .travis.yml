@@ -24,8 +24,8 @@ before_install:
 
 before_install:
 install:
-  - pip install -r requirements.txt
-  - pip install flake8
+  - pip3 install -r requirements.txt
+  - pip3 install flake8
 # command to run tests
 script:
   - pytest tests
