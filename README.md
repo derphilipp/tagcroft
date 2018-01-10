@@ -20,6 +20,11 @@ $ brew install lame
 $ brew install ffmpeg --with-fdk-aac
 ```
 
+Ubuntu Linux:
+```
+$ sudo apt install python3 lame gpac kid3-cli ffmpeg
+```
+
 Install the python requirements:
 ```
 $ pip3 install -r requirements.txt
