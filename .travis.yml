@@ -25,11 +25,11 @@ before_install:
   - if [ "$TRAVIS_OS_NAME" == "linux" ]; then sudo add-apt-repository ppa:mc3man/trusty-media -y; fi
   - if [ "$TRAVIS_OS_NAME" == "linux" ]; then sudo apt-get update -q; fi
   - if [ "$TRAVIS_OS_NAME" == "linux" ]; then sudo apt-get install ffmpeg -y; fi
-  - if [ "$TRAVIS_OS_NAME" == "osx" ]; then brew cask install kid3; fi
   - if [ "$TRAVIS_OS_NAME" == "osx" ]; then brew install python3; fi
   - if [ "$TRAVIS_OS_NAME" == "osx" ]; then brew install lame; fi
   - if [ "$TRAVIS_OS_NAME" == "osx" ]; then brew install mp4box; fi
   - if [ "$TRAVIS_OS_NAME" == "osx" ]; then brew install ffmpeg --with-fdk-aac; fi
+  - if [ "$TRAVIS_OS_NAME" == "osx" ]; then brew cask install kid3; fi
 
 install:
   - pip3 install -r requirements.txt
