@@ -22,11 +22,11 @@ $ brew install ffmpeg --with-fdk-aac
 
 Install the python requirements:
 ```
-$ pip install -r requirements.txt
+$ pip3 install -r requirements.txt
 ```
 
 Run the application:
 ```
-$ python tagcroft.py AUDIO.wav METADATA.yaml
+$ python3 tagcroft.py AUDIO.wav METADATA.yaml
 ```
 
