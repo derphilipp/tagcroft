@@ -1,28 +1,36 @@
 ---
 language: python
 
-os:
-- linux
-- osx
+matrix:
+  include:
+    - os: linux
+      dist: trusty
+      sudo: required
+      python: 3.6
+    - os: osx
+      osx_image: xcode9.2
+      language: generic
 
-osx_image: xcode9.2
-dist: trusty
+addons:
+  apt:
+    packages:
+      - lame
+      - gpac
+      - kid3-cli
+
 
 # command to install dependencies
 
 before_install:
-- if [ "$TRAVIS_OS_NAME" == "linux" ]; then
-    sudo apt-get update -qq;
-    sudo apt-get install -y python3 lame ffmpeg mp4box kid3-cli
-  elif [ "$TRAVIS_OS_NAME" == "osx" ]; then
-  - brew install python
-  - brew install lame
-  - brew install ffmpeg --with-fdk-aac
-  - brew install mp4box
-  - brew cask install kid3
-  fi
+  - if [ "$TRAVIS_OS_NAME" == "linux" ]; then sudo add-apt-repository ppa:mc3man/trusty-media -y; fi
+  - if [ "$TRAVIS_OS_NAME" == "linux" ]; then sudo apt-get update -q; fi
+  - if [ "$TRAVIS_OS_NAME" == "linux" ]; then sudo apt-get install ffmpeg -y; fi
+  - if [ "$TRAVIS_OS_NAME" == "osx" ]; then brew cask install kid3; fi
+  - if [ "$TRAVIS_OS_NAME" == "osx" ]; then brew install python3; fi
+  - if [ "$TRAVIS_OS_NAME" == "osx" ]; then brew install lame; fi
+  - if [ "$TRAVIS_OS_NAME" == "osx" ]; then brew install mp4box; fi
+  - if [ "$TRAVIS_OS_NAME" == "osx" ]; then brew install ffmpeg --with-fdk-aac; fi
 
-before_install:
 install:
   - pip3 install -r requirements.txt
   - pip3 install flake8
