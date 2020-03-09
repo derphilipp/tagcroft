@@ -1,0 +1,29 @@
+[tool.poetry]
+name = "tagcroft"
+version = "0.1.0"
+description = "tagcroft is a cli to put tags into podcast audio files"
+
+license = "MIT"
+
+authors = [
+    "Philipp Weißmann <mail@philipp-weissmann.de>"
+]
+
+readme = 'README.md'  # Markdown files are supported
+
+repository = "https://github.com/derphilipp/tagcroft"
+homepage = "https://github.com/derphilipp/tagcroft"
+
+keywords = ['podcast', 'tags']
+
+[tool.poetry.dependencies]
+python = "^3.5"  # Compatible python versions must be declared here
+PyYAML = "^5.1"
+click = "^7.0"
+dinsort = "^0.2"
+eyed3 = "^0.9.2"
+
+[tool.tagcroft.scripts]
+my-script = 'tagcroft:main'
+
+

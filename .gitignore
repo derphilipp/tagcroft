@@ -12,3 +12,6 @@
 venv/
 .cache/
 .mypy_cache
+.venv
+tagcroft.egg-info
+.DS_Store

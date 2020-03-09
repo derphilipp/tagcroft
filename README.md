@@ -17,7 +17,8 @@ macOS:
 $ brew cask install kid3
 $ brew install MP4Box
 $ brew install lame
-$ brew install ffmpeg --with-fdk-aac
+$ brew tap homebrew-ffmpeg/ffmpeg
+$ brew install homebrew-ffmpeg/ffmpeg/ffmpeg --with-fdk-aac
 ```
 
 Ubuntu Linux:
@@ -25,14 +26,17 @@ Ubuntu Linux:
 $ sudo apt install python3 lame gpac kid3-cli ffmpeg
 ```
 
-Install the python requirements:
+Install poetry for requirements management:
+https://github.com/python-poetry/poetry
+
+Install the required libraries for the project
 ```
-$ pip3 install -r requirements.txt
+$ poetry install
 ```
 
 Run the application:
 ```
-$ python3 tagcroft.py AUDIO.wav METADATA.yaml
+$ poetry run ./tagcroft.py AUDIO.wav METADATA.yaml
 ```
 
 ## Name

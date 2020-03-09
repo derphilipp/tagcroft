@@ -1,17 +1,19 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 """
 tagcroft is a cli to put tags into podcast audio files
 """
 
-import click
-import dinsort
-import mp3chapter
 import os
 import re
 import subprocess
-import text_to_srt
+
 import yaml as yml
+
+import click
+import dinsort
+import mp3chapter
+import text_to_srt
 
 
 def get_mp4_length(input_filename):
@@ -99,7 +101,7 @@ def set_picture(filename, picture_filename):
 
 
 def load_yaml(file):
-    data = yml.load(file)
+    data = yml.load(file, Loader=yml.FullLoader)
     data['title'] = data['title'].strip()
     data['artist'] = data['artist'].strip()
     data['description'] = "".join(data['description']).replace('\n',
