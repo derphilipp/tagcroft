@@ -37,6 +37,6 @@ install:
 # command to run tests
 script:
   - poetry
-  - poetry run ./tagcroft.py
+  - poetry run pytest
   #- pytest tests
   #- flake8 .
