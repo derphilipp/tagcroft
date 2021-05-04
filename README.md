@@ -1,6 +1,8 @@
 # tagcroft
 [![Build Status](https://travis-ci.org/derphilipp/tagcroft.svg?branch=master)](https://travis-ci.org/derphilipp/tagcroft)
 
+## All features are implemented in the [Ultraschall Project](https://ultraschall.fm) and this project therefore abandoned.
+
 tagcroft is a cli to put tags into podcast audio files
 
 ## Basic setup
